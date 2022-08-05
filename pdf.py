@@ -7,11 +7,9 @@ from urllib.parse import urlparse
 from pdfminer.layout import LTTextContainer, LTChar, LTAnno
 
 class ExtractText:
-    url = ''
-
     # TextElementをすべてprintする
-    def printTextElement(self, url):
-        for page_layout in extract_pages(url):
+    def printTextElement(self, target):
+        for page_layout in extract_pages(target):
             for element in page_layout:
                 # print(element)
                 if isinstance(element, LTTextContainer):
@@ -39,8 +37,8 @@ class ExtractText:
             print(character)
 
     # LTTextContainerが存在するか確認    
-    def existTextElement(self, url):
-        for page_layout in extract_pages(url):
+    def existTextElement(self, target):
+        for page_layout in extract_pages(target):
             for element in page_layout:
                 if isinstance(element, LTTextContainer):
                     return True
@@ -48,7 +46,7 @@ class ExtractText:
 
 url = "https://kentei.tokyo-cci.or.jp/eco/pdf/eco-gaiyou.pdf"
 uparse = urlparse(url)
-extractText = ExtractText()
+extractText = ExtractText(url)
 
 if uparse[0] == 'http' or uparse[0] == 'https':
 
