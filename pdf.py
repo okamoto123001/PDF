@@ -46,7 +46,7 @@ class ExtractText:
 
 url = "https://kentei.tokyo-cci.or.jp/eco/pdf/eco-gaiyou.pdf"
 uparse = urlparse(url)
-extractText = ExtractText(url)
+extractText = ExtractText()
 
 if uparse[0] == 'http' or uparse[0] == 'https':
 
